@@ -6,6 +6,8 @@
 #include "gpio_setup.h"
 #include "utils.h"
 #include "globals.h"
+#include "AS5600.h"
+#include "stm32l4xx_hal_i2c.h"
 
 #endif
 
