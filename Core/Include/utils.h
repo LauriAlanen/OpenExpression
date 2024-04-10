@@ -1,9 +1,9 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "stm32l4xx.h"
+#include "stm32l4xx_hal.h"
 #include "globals.h"
 
-void delay_ms(uint32_t ms_to_delay);
+void Error_Handler(void);
 
 #endif

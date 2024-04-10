@@ -1,8 +1,11 @@
 #include "../Include/utils.h"
 
-void delay_ms(uint32_t ms_to_delay)
+void Error_Handler(void)
 {
-    uint32_t start_ticks = msTicks;
+    __disable_irq();
 
-    while ((msTicks - start_ticks) < ms_to_delay) {}
+    while (1) 
+    {
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, 1);
+    }
 }
