@@ -2,14 +2,16 @@
 #define AS5600_H
 
 #include "stm32l4xx_hal.h"
+#include "stm32l4xx_hal_i2c.h"
+#include "utils.h"
 
 // --------- AS5600 ADDRESS START -------------------
 #define AS5600_ADDRESS 0x36
 // --------- AS5600 ADDRESS END ------------------- 
 
 // --------- AS5600 COMMUNICATION START -------------------
-#define AS5600_MAX_FREQUENCY 10000000UL
-#define AS5600_RX_BITS 12
+#define AS5600_I2C_MAX_FREQUENCY 10000000UL
+#define AS5600_I2C_TIMING 0x00404C74
 #define AS5600_I2C_SCL_PIN_Pos 9U
 #define AS5600_I2C_SCL_PORT GPIOA
 #define AS5600_I2C_SDA_PIN_Pos 10U
@@ -32,7 +34,9 @@
 #define AS5600_BURN 0xFF
 // --------- AS5600 CONF REGISTERS END -------------------
 
+I2C_HandleTypeDef hi2c1;
 
-HAL_StatusTypeDef AS5600_Init(void);
+void AS5600_Init(void);
+
 
 #endif
