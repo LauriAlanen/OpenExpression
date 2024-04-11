@@ -10,11 +10,11 @@
 // --------- AS5600 COMMUNICATION START -------------------
 #define AS5600_MAX_FREQUENCY 10000000UL
 #define AS5600_RX_BITS 12
-#define AS5600_I2C_SCL_PIN GPIO_PIN_9
+#define AS5600_I2C_SCL_PIN_Pos 9U
 #define AS5600_I2C_SCL_PORT GPIOA
-#define AS5600_I2C_SDA_PIN GPIO_PIN_10
+#define AS5600_I2C_SDA_PIN_Pos 10U
 #define AS5600_I2C_SDA_PORT GPIOA
-#define AS5600_DIR_PIN GPIO_PIN_0
+#define AS5600_DIR_PIN_Pos 0U
 #define AS5600_DIR_PORT GPIOB
 // --------- AS5600 COMMUNICATION END -------------------
 
@@ -33,6 +33,6 @@
 // --------- AS5600 CONF REGISTERS END -------------------
 
 
-HAL_StatusTypeDef AS5600_Init();
+HAL_StatusTypeDef AS5600_Init(void);
 
 #endif
