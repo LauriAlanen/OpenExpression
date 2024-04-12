@@ -5,6 +5,7 @@ int main(void)
     HAL_Init();
     SYSCLK_Init();
     GPIO_Init();
+    AS5600_Init();
     
     while(1)
     {

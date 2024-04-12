@@ -7347,7 +7347,6 @@ static void I2C_Enable_IRQ(I2C_HandleTypeDef *hi2c, uint16_t InterruptRequest)
       /* Enable ERR, STOP, NACK and ADDR interrupts */
       tmpisr |= I2C_IT_ADDRI | I2C_IT_STOPI | I2C_IT_NACKI | I2C_IT_ERRI;
     }
-
     if ((InterruptRequest & I2C_XFER_TX_IT) == I2C_XFER_TX_IT)
     {
       /* Enable ERR, TC, STOP, NACK and TXI interrupts */
