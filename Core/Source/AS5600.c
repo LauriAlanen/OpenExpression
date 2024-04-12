@@ -1,6 +1,20 @@
 #include "AS5600.h"
 
-void AS5600_Init(void)
+
+void AS5600_GPIO_Init(void)
+{
+    AS5600_I2C_SCL_PORT->MODER |= (0x03U << AS5600_I2C_SCL_PIN_Pos * 2U);
+    AS5600_I2C_SDA_PORT->MODER |= (0x03U << AS5600_I2C_SDA_PIN_Pos * 2U);
+    AS5600_I2C_SCL_PORT->OSPEEDR |= (0x03U << AS5600_I2C_SCL_PIN_Pos * 2U);
+    AS5600_I2C_SDA_PORT->OSPEEDR |= (0x03U << AS5600_I2C_SDA_PIN_Pos * 2U);
+    AS5600_I2C_SCL_PORT->OTYPER |= (0x01U << AS5600_I2C_SCL_PIN_Pos);
+    AS5600_I2C_SDA_PORT->OTYPER |= (0x01U << AS5600_I2C_SDA_PIN_Pos);
+    AS5600_I2C_SCL_PORT->PUPDR |= (0x01U << AS5600_I2C_SCL_PIN_Pos * 2U);
+    AS5600_I2C_SDA_PORT->PUPDR |= (0x01U << AS5600_I2C_SDA_PIN_Pos * 2U);
+}
+
+
+void AS5600_I2C_Init(void)
 {
     hi2c1.Instance = I2C1;
     hi2c1.Init.Timing = AS5600_I2C_TIMING;
@@ -28,4 +42,10 @@ void AS5600_Init(void)
         Error_Handler();
     }
 }
- 
+
+
+void AS5600_Init(void)
+{
+    AS5600_GPIO_Init();
+    AS5600_I2C_Init();
+}

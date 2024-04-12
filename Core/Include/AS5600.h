@@ -37,6 +37,7 @@
 I2C_HandleTypeDef hi2c1;
 
 void AS5600_Init(void);
-
+void AS5600_GPIO_Init(void);
+void AS5600_I2C_Init(void);
 
 #endif
