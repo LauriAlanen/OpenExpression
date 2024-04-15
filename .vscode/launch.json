@@ -18,6 +18,20 @@
             "swoConfig": {} // currently (v1.7.0) not supported
         },
         {
+            "name": "STlink launch (Semihosting)",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/Debug/STM32L432KC.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "device": "STM32L432KC",
+            "interface": "swd",
+            // "preLaunchCommands": ["Build all"], // you can execute command instead of task
+            "svdFile": "", // Include svd to watch device peripherals
+            "swoConfig": {}, // currently (v1.7.0) not supported
+            "serverArgs" : ["--semihosting"]
+        },
+        {
             "name": "STlink attach",
             "cwd": "${workspaceRoot}",
             "executable": "${workspaceRoot}/build/Debug/STM32L432KC.elf",

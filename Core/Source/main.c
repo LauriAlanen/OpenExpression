@@ -1,7 +1,7 @@
 #include "main.h"
-#include <stdio.h>
 
 #if SEMIHOSTING_ENABLED
+#include <stdio.h>
 extern void initialise_monitor_handles(void);
 #endif
 
@@ -18,6 +18,7 @@ int main(void)
     
     while(1)
     {
+        printf("Hello\n");
         HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
         HAL_Delay(1000);
     }
