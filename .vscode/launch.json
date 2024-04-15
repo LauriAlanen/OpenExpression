@@ -1,6 +1,4 @@
 {
-// Configure debug launch settings
-// Feel free to copy these and modify them for your debugger and MCU
     "version": "0.2.0",
     "projectName": "STM32L432KC",
     "configurations": [
@@ -13,9 +11,7 @@
             "servertype": "stutil",
             "device": "STM32L432KC",
             "interface": "swd",
-            // "preLaunchCommands": ["Build all"], // you can execute command instead of task
             "svdFile": "", // Include svd to watch device peripherals
-            "swoConfig": {} // currently (v1.7.0) not supported
         },
         {
             "name": "STlink launch (Semihosting)",
@@ -26,9 +22,7 @@
             "servertype": "stutil",
             "device": "STM32L432KC",
             "interface": "swd",
-            // "preLaunchCommands": ["Build all"], // you can execute command instead of task
             "svdFile": "", // Include svd to watch device peripherals
-            "swoConfig": {}, // currently (v1.7.0) not supported
             "serverArgs" : ["--semihosting"]
         },
         {
@@ -40,9 +34,6 @@
             "servertype": "stutil",
             "device": "STM32L432KC",
             "interface": "swd",
-            // "preLaunchCommands": ["Build all"], // you can execute command instead of task
-            //"svdFile": "", // Include svd to watch device peripherals
-            "swoConfig": {} // currently (v1.7.0) not dupported
         },
     ]
 }
