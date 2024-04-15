@@ -6,6 +6,5 @@ void Error_Handler(void)
 
     while (1) 
     {
-        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, 1);
     }
 }

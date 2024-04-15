@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.22)
 
+option(SEMIHOSTING "Enable semihosting" ON)
+include(cmake/gcc-arm-none-eabi.cmake SEMIHOSTING)
+message("SEMIHOSTING is set to: ${SEMIHOSTING}")
+
 # Setup compiler settings
 set(CMAKE_C_STANDARD                99)
 set(CMAKE_C_STANDARD_REQUIRED       ON)
@@ -15,7 +19,7 @@ message("Build type: "              ${CMAKE_BUILD_TYPE})
 # Core project settings
 #
 project(STM32L432KC)
-enable_language(C CXX ASM)
+enable_language(C ASM)
 
 #
 # Core MCU flags, CPU, instruction set and FPU setup
@@ -91,6 +95,13 @@ target_compile_options(${EXECUTABLE} PRIVATE
     -Og -g3 -ggdb
 )
 
+if(SEMIHOSTING)
+    target_link_options(${EXECUTABLE} PRIVATE
+    -lrdimon
+    )
+    target_compile_definitions(${EXECUTABLE} PRIVATE SEMIHOSTING_ENABLED)
+endif(SEMIHOSTING)
+
 # Linker options
 target_link_options(${EXECUTABLE} PRIVATE
     -T${linker_script_SRC}
@@ -99,12 +110,14 @@ target_link_options(${EXECUTABLE} PRIVATE
     -u _printf_float                # STDIO float formatting support
     -Wl,--start-group
     -lc
-    -lm
-    -lstdc++
-    -lsupc++
+    #-lm
+    #-lstdc++
+    #-lsupc++
     -Wl,--end-group
     -Wl,--print-memory-usage
 )
+
+
 
 # Execute post-build to print size
 add_custom_command(TARGET ${EXECUTABLE} POST_BUILD

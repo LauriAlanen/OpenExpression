@@ -28,7 +28,7 @@
             "interface": "swd",
             // "preLaunchCommands": ["Build all"], // you can execute command instead of task
             //"svdFile": "", // Include svd to watch device peripherals
-            "swoConfig": {} // currently (v1.7.0) not supported
+            "swoConfig": {} // currently (v1.7.0) not dupported
         },
     ]
 }

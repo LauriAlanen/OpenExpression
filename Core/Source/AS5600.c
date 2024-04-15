@@ -13,6 +13,9 @@ void AS5600_GPIO_Init(void)
     {
         Error_Handler();
     }
+    
+    RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
+    RCC->AHB2ENR |= RCC_AHB2ENR_GPIOBEN;
 
     GPIO_InitStruct.Pin = AS5600_DIR_PIN;
     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -21,20 +24,12 @@ void AS5600_GPIO_Init(void)
 
     GPIO_InitStruct.Pin = AS5600_I2C_SCL_PIN | AS5600_I2C_SDA_PIN;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
     HAL_GPIO_Init(AS5600_I2C_PORT, &GPIO_InitStruct);
-    
-    if (!(RCC->APB1ENR1 & RCC_APB1ENR1_I2C1EN)) 
-    {
-        RCC->APB1ENR1 |= RCC_APB1ENR1_I2C1EN;
-    }
 
-    if (!(RCC->AHB2ENR & RCC_AHB2ENR_GPIOAEN)) 
-    {
-        RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
-    }
+    RCC->APB1ENR1 |= RCC_APB1ENR1_I2C1EN;
 }
 
 void AS5600_I2C_Init(void)
@@ -54,7 +49,7 @@ void AS5600_I2C_Init(void)
         Error_Handler();
     }    
 
-    if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+/*     if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
     {
         Error_Handler();
     }
@@ -62,7 +57,7 @@ void AS5600_I2C_Init(void)
     if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
     {
         Error_Handler();
-    }
+    } */
 }
 
 void AS5600_Init(void)

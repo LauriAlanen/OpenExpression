@@ -4,7 +4,13 @@ set(CMAKE_SYSTEM_PROCESSOR          arm)
 # Some default GCC settings
 # arm-none-eabi- must be part of path environment
 set(TOOLCHAIN_PREFIX                arm-none-eabi-)
-set(FLAGS                           "-fdata-sections -ffunction-sections --specs=nosys.specs -Wl,--gc-sections")
+
+if(SEMIHOSTING)
+    set(FLAGS                           "-fdata-sections -ffunction-sections --specs=rdimon.specs -Wl,--gc-sections")
+else()
+    set(FLAGS                           "-fdata-sections -ffunction-sections --specs=nosys.specs -Wl,--gc-sections")
+endif(SEMIHOSTING)
+
 set(CPP_FLAGS                       "-fno-rtti -fno-exceptions -fno-threadsafe-statics")
 
 # Define compiler settings
