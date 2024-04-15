@@ -5,6 +5,11 @@ This project is currently only made for the purpose of learning ARM based proces
 
 All of the following configurations and tools are designed to be runned in Linux based operating systems.
 
+# OpenExpression
+- Fully open source as the name implies :)
+- 3D Printed expression pedal which communicates using the MIDI protocol.
+- AS5600 Magnetic Encoder is used for reading the angle of the pedal. This is totally unnecessary and complicates lots of things, but has been chosen for the sake of learning.
+- Uses any STM32L4xx based MCU. The code is written mostly using the `STM32L4xx` HAL. Currently can be built only for the `STM32L432`, but this is limited by startup scripts and some parts that use direct register access. 
 
 ## Debugging
 - Includes preconfigured launch options for debugging `launch.json`, with GDB + STLink.
