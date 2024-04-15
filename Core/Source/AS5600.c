@@ -44,10 +44,13 @@ void AS5600_I2C_Init(void)
     hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
     hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
 
+    printf("Entered I2C\n");
     if (HAL_I2C_Init(&hi2c1) != HAL_OK) 
     {
+        printf("Error\n");
         Error_Handler();
     }    
+    printf("Exited I2C\n");
 
 /*     if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
     {

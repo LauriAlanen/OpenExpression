@@ -54,3 +54,5 @@ dkms.conf
 # User Defined
 /build
 .cache
+:tt
+compile_commands.json

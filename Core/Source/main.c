@@ -1,7 +1,6 @@
 #include "main.h"
 
 #if SEMIHOSTING_ENABLED
-#include <stdio.h>
 extern void initialise_monitor_handles(void);
 #endif
 
@@ -14,12 +13,13 @@ int main(void)
     HAL_Init();
     SYSCLK_Init();
     GPIO_Init();
+
+    // BUG : When stm32 randomly enters a bugged state the I2C_INIT doesnt even get called
     AS5600_Init();
     
     while(1)
     {
-        printf("Hello\n");
         HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
-        HAL_Delay(1000);
+        HAL_Delay(500);
     }
 }

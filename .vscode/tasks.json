@@ -1,0 +1,62 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Pre Debug Task",
+            "type": "shell",
+            "command" : "echo Pre Debug Task Completed!",
+            "dependsOn" : ["CMake Configure", "CMake Build", "STlink-Flash"],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "CMake Configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+                "-DCMAKE_TOOLCHAIN_FILE=${workspaceFolder}/cmake/gcc-arm-none-eabi.cmake",
+                "-S${workspaceFolder}",
+                "-B${workspaceFolder}/build/Debug",
+                "-G",
+                "Ninja"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+        },
+        {
+            "label": "CMake Build",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build/Debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+        },
+        {
+            "label": "STlink-Flash",
+            "type": "shell",
+            "command": "st-flash",
+            "args": ["--reset", "write", "${workspaceFolder}/build/Debug/STM32L432KC.bin", "0x8000000"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
+        }        
+    ]
+}

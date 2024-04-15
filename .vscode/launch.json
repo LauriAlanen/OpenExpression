@@ -5,6 +5,7 @@
         {
             "name": "STlink launch",
             "cwd": "${workspaceRoot}",
+            "preLaunchTask": "Pre Debug Task", 
             "executable": "${workspaceRoot}/build/Debug/STM32L432KC.elf",
             "request": "launch",
             "type": "cortex-debug",
@@ -16,6 +17,7 @@
         {
             "name": "STlink launch (Semihosting)",
             "cwd": "${workspaceRoot}",
+            "preLaunchTask": "Pre Debug Task", 
             "executable": "${workspaceRoot}/build/Debug/STM32L432KC.elf",
             "request": "launch",
             "type": "cortex-debug",
@@ -28,6 +30,7 @@
         {
             "name": "STlink attach",
             "cwd": "${workspaceRoot}",
+            "preLaunchTask": "Pre Debug Task", 
             "executable": "${workspaceRoot}/build/Debug/STM32L432KC.elf",
             "request": "attach",
             "type": "cortex-debug",

@@ -3,9 +3,6 @@
 ## Sidenote
 This project is currently only made for the purpose of learning ARM based processors, building toolchains and learning the building/linking processes
 
-
-
-
 All of the following configurations and tools are designed to be ran in Linux based operating systems.
 
 
