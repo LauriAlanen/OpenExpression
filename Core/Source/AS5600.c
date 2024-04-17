@@ -7,12 +7,14 @@ void AS5600_GPIO_Init(void)
     GPIO_InitTypeDef GPIO_InitStruct = {};
     RCC_PeriphCLKInitTypeDef PeripheralClkInit = {};
 
+    printf("Entered I2C\n");
     PeripheralClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C1;
     PeripheralClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
     if (HAL_RCCEx_PeriphCLKConfig(&PeripheralClkInit) != HAL_OK) 
     {
         Error_Handler();
     }
+    printf("Exited I2C\n");
     
     RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
     RCC->AHB2ENR |= RCC_AHB2ENR_GPIOBEN;
@@ -44,15 +46,13 @@ void AS5600_I2C_Init(void)
     hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
     hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
 
-    printf("Entered I2C\n");
     if (HAL_I2C_Init(&hi2c1) != HAL_OK) 
     {
         printf("Error\n");
         Error_Handler();
     }    
-    printf("Exited I2C\n");
 
-/*     if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+    if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
     {
         Error_Handler();
     }
@@ -60,11 +60,11 @@ void AS5600_I2C_Init(void)
     if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
     {
         Error_Handler();
-    } */
+    }
 }
 
 void AS5600_Init(void)
 {
-    AS5600_GPIO_Init();
+    //AS5600_GPIO_Init();
     AS5600_I2C_Init();
 }

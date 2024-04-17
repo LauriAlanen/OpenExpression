@@ -4,6 +4,7 @@
 #include "stm32l4xx_hal.h"
 #include "stm32l4xx_hal_i2c.h"
 #include "utils.h"
+#include "globals.h"
 
 // --------- AS5600 ADDRESS START -------------------
 #define AS5600_ADDRESS 0x36

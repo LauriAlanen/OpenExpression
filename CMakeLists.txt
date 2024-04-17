@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-option(SEMIHOSTING "Enable semihosting" ON)
+option(SEMIHOSTING "Enable semihosting" NO)
 include(cmake/gcc-arm-none-eabi.cmake SEMIHOSTING)
 message("SEMIHOSTING is set to: ${SEMIHOSTING}")
 

@@ -1,2 +1,2 @@
-#include "../Include/globals.h"
+#include "globals.h"
 
