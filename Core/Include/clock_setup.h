@@ -2,7 +2,7 @@
 #define CLOCK_SETUP_H
 
 #include "stm32l4xx_hal.h"
-#include "utils.h"
+#include "stm32l4xx_it.h"
 #include "globals.h"
 
 void SYSCLK_Init(void);

@@ -20,6 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l4xx_hal.h"
+#include "stm32l4xx_it.h"
 #include "AS5600.h"
 
 /** @addtogroup STM32L4xx_HAL_Driver

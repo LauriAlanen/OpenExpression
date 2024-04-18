@@ -3,11 +3,11 @@
 
 #include "stm32l4xx_hal.h"
 #include "stm32l4xx_hal_i2c.h"
-#include "utils.h"
+#include "stm32l4xx_it.h"
 #include "globals.h"
 
 // --------- AS5600 ADDRESS START -------------------
-#define AS5600_ADDRESS 0x36
+#define AS5600_ADDRESS 0x36 << 1
 // --------- AS5600 ADDRESS END ------------------- 
 
 // --------- AS5600 COMMUNICATION START -------------------
@@ -36,6 +36,7 @@
 
 
 void AS5600_Init(void);
+void AS5600_Test_I2C(void);
 void AS5600_GPIO_Init(void);
 void AS5600_I2C_Init(void);
 

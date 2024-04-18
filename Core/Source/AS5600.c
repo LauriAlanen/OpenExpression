@@ -45,7 +45,7 @@ void AS5600_I2C_Init(void)
     hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
     hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
     hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-
+    
     if (HAL_I2C_Init(&hi2c1) != HAL_OK) 
     {
         printf("Error\n");
@@ -63,8 +63,27 @@ void AS5600_I2C_Init(void)
     }
 }
 
+void AS5600_Test_I2C(void)
+{
+    uint8_t TxBuffer[] = {AS5600_ANGLE};
+    HAL_StatusTypeDef status;
+
+    status = HAL_I2C_Master_Transmit(&hi2c1, AS5600_ADDRESS, &TxBuffer[0], 1, 1000);
+    if (status != HAL_OK) 
+    {
+        uint8_t counter = 0;
+        while (counter < 255)
+        {
+            HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
+            HAL_Delay(20);
+            counter++;
+        }
+    }
+}
+
 void AS5600_Init(void)
 {
-    //AS5600_GPIO_Init();
+    AS5600_GPIO_Init();
     AS5600_I2C_Init();
+    AS5600_Test_I2C();
 }
